@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block active %}
+    <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/workout">Workout</a>
+    </li>
+{% endblock %}
+
+{% block body %}
+
+    <!-- Select workout -->
+    <select class="form-select form-select-lg mb-4" aria-label="Select workout" id="select_workout">
+        {% for workout in user.workouts %}
+            <option value="{{ workout.id }}">{{ workout.name }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Exercises -->
+    {% for workout in user.workouts %}
+        <div class="workout {{ workout.id }}" hidden>
+            <form method="POST" autocomplete="off">
+                {% for exercise in workout.exercises %}
+                    <div class="mb-4">
+                        <h1 class="text-light">{{ exercise.name }}</h1>
+                        <div class="row align-items-end">
+                            <div class="col-auto">
+                                <input type="number" step="0.01" pattern="[0-9]+([\.,][0-9]+)?" class="form-control" placeholder="-" name="weight" value="{{ (exercise.weight | int) if (exercise.weight | float | is_integer) and (exercise.weight) else (exercise.weight) }}" disabled>
+                            </div>
+                            <div class="col-auto text-light p-0">
+                                kg
+                            </div>
+                            {% if exercise.include_details %}
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" placeholder="-" name="details" value="{{ exercise.details }}" disabled>
+                                </div>
+                            {% else %}
+                                <input type="hidden" name="details" value="">
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="button" class="btn btn-secondary edit {{ workout.id }}">Edit</button>
+                <button type="submit" class="btn btn-primary save {{ workout.id }} mb-2" hidden>Save changes</button>
+                <input type="hidden" name="workout" value="{{ workout.id }}">
+                <input type="hidden" name="request_type" value="save">
+            </form>
+            <form method="POST">
+                <button type="submit" class="btn btn-light cancel {{ workout.id }}" name="workout" value="{{ workout.id }}" hidden>Cancel</button>
+                <input type="hidden" name="request_type" value="cancel">
+            </form>
+        </div>
+    {% endfor %}
+
+    <!-- JavaScript -->
+    {% if displayRequested %}
+        <script>
+            /* Select requested workout */
+            var select_workout = document.getElementById("select_workout")
+            var requested_workout = "{{ requested_workout }}"
+            select_workout.value = requested_workout
+        </script>
+    {% endif %}
+
+    {% for workout in user.workouts %}
+        <script>
+            /* Listen for clicks on edit button and enable editing */
+            document.getElementsByClassName("edit {{ workout.id }}")[0].addEventListener("click", function() {
+                document.getElementsByClassName("edit {{ workout.id }}")[0].hidden = true
+                document.getElementsByClassName("save {{ workout.id }}")[0].hidden = false
+                document.getElementsByClassName("cancel {{ workout.id }}")[0].hidden = false
+                for (let i = 0; i < document.getElementsByClassName("workout {{ workout.id }}")[0].getElementsByTagName("input").length; i++) {
+                    document.getElementsByClassName("workout {{ workout.id }}")[0].getElementsByTagName("input")[i].disabled = false
+                }
+            })
+        </script>
+    {% endfor %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename='workout.js') }}"></script>
+
+{% endblock %}

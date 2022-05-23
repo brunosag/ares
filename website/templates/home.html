@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/workout">Workout</a>
+    </li>
+{% endblock %}
+
+{% block body %}
+
+    <!-- Workouts -->
+    {% for workout in user.workouts %}
+        <form action="/workout" method="POST">
+            <button type="submit" class="btn btn-light text-start mb-1" name="workout" value="{{ workout.id }}">
+                <h2>{{ workout.name }}</h2>
+                <p>{{ workout.description }}</p>
+            </button>
+        </form>
+        <form action="/edit-workout" method="POST">
+            <button type="submit" class="btn btn-secondary mb-4" name="workout" value="{{ workout.id }}">Edit</button>
+        </form>
+    {% endfor %}
+
+    <!-- New workout button -->
+    <a class="btn btn-primary mt-3" href="/new-workout" role="button">
+        Add new workout
+    </a>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+
+{% endblock %}

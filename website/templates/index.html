@@ -4,7 +4,25 @@
 
 {% block body %}
 
-    <a class="btn btn-light" href="/login" role="button">Login</a>
-    <a class="btn btn-primary" href="/create-account" role="button">Create account</a>
+    <!-- Welcome -->
+    <div class="container">
+        <div class="row justify-content-center text-center" id="logo">
+            <div class="col-7 p-0">
+                <img class="img-fluid" src="/static/images/logo.png" alt="Ares Workout" width="330px" height="330px">
+            </div>
+        </div>
+        <div class="row justify-content-center bottom-row">
+            <div class="col-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 p-0">
+                <div class="subtitle d-flex justify-content-center">WELCOME TO</div>
+                <div class="title d-flex justify-content-center mb-5">ARES</div>
+                <div class="mb-2 px-1 pt-5">
+                    <a class="d-flex justify-content-center btn btn-light" href="/login" role="button">Log in</a>
+                </div>
+                <div class="mb-2 px-1">
+                    <a class="d-flex justify-content-center btn btn-primary" href="/create-account" role="button">Create account</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

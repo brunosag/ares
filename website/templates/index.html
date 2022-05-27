@@ -4,7 +4,27 @@
 
 {% block body %}
 
-    <a class="btn btn-light" href="/login" role="button">Login</a>
-    <a class="btn btn-primary" href="/create-account" role="button">Create account</a>
+    <!-- Welcome -->
+    <div class="container center">
+        <div class="row">
+            <div class="col">
+                <div id="logo-index">
+                    <img src="/static/images/logo.png" alt="Ares Workout" width="220px" height="220px">
+                </div>
+                <div id="subtitle-index">
+                    WELCOME TO
+                </div>
+                <div id="title-index">
+                    <span class="text-primary">ARES</span>&nbsp;WORKOUT
+                </div>
+                <div>
+                    <a class="btn btn-light btn-index m-2" href="/login" role="button">Log in</a>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-index" href="/create-account" role="button">Create account</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

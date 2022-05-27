@@ -5,21 +5,23 @@
 {% block body %}
 
     <!-- Welcome -->
-    <div class="container">
-        <div class="row justify-content-center text-center" id="logo">
-            <div class="col-7 p-0">
-                <img class="img-fluid" src="/static/images/logo.png" alt="Ares Workout" width="330px" height="330px">
-            </div>
-        </div>
-        <div class="row justify-content-center bottom-row">
-            <div class="col-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 p-0">
-                <div class="subtitle d-flex justify-content-center">WELCOME TO</div>
-                <div class="title d-flex justify-content-center mb-5">ARES</div>
-                <div class="mb-2 px-1 pt-5">
-                    <a class="d-flex justify-content-center btn btn-light" href="/login" role="button">Log in</a>
+    <div class="container center">
+        <div class="row">
+            <div class="col">
+                <div id="logo-index">
+                    <img src="/static/images/logo.png" alt="Ares Workout" width="220px" height="220px">
                 </div>
-                <div class="mb-2 px-1">
-                    <a class="d-flex justify-content-center btn btn-primary" href="/create-account" role="button">Create account</a>
+                <div id="subtitle-index">
+                    WELCOME TO
+                </div>
+                <div id="title-index">
+                    <span class="text-primary">ARES</span>&nbsp;WORKOUT
+                </div>
+                <div>
+                    <a class="btn btn-light btn-index m-2" href="/login" role="button">Log in</a>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-index" href="/create-account" role="button">Create account</a>
                 </div>
             </div>
         </div>

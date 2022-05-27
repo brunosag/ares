@@ -21,6 +21,7 @@ dbus-python==1.2.16
 distro==1.4.0
 distro-info===0.23ubuntu1
 entrypoints==0.3
+ez-setup==0.9
 Flask==2.1.2
 Flask-Login==0.6.1
 Flask-Session==0.4.0

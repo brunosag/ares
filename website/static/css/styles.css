@@ -12,10 +12,10 @@ input[name="exercise_name"] {
     justify-content: center;
     text-transform: uppercase;
     border-radius: 0.7rem;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     letter-spacing: 0.15rem;
     height: 3.1rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 html, body {
@@ -63,7 +63,7 @@ html, body {
 }
 
 .btn-index {
-    width: 17rem;
+    width: 16rem;
 }
 
 @media all and (max-width: 530px) {
@@ -78,20 +78,20 @@ html, body {
         font-size: 3.9vw;
         letter-spacing: 1.2vw;
         margin-inline-start: 1.2vw;
-        margin-bottom: 0.3vw;
+        margin-bottom: 0.3vh;
     }
 
     #title-index {
-        font-size: 9vw;
+        font-size: 10.2vw;
         margin-bottom: 15vw;
     }
 
     .btn-index {
         border-radius: 2.1vw;
-        font-size: 2.55vw;
+        font-size: 2.4vw;
         letter-spacing: 0.45vw;
-        height: 9.3vw;
-        width: 51vw;
+        height: 11vw;
+        width: 50vw;
     }
     
 }

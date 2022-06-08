@@ -20,8 +20,8 @@ def index():
 
     else:
 
-        # Display index page
-        return render_template("index.html")
+        # Redirect user to sign-up page
+        return redirect(url_for("auth.signup"))
 
 
 @auth.route('/login', methods=["GET", "POST"])
@@ -74,8 +74,8 @@ def logout():
     return redirect(url_for("auth.index"))
 
 
-@auth.route('/create-account', methods=["GET", "POST"])
-def register():
+@auth.route('/signup', methods=["GET", "POST"])
+def signup():
 
     if request.method == "POST":
 
@@ -120,4 +120,4 @@ def register():
             return redirect(url_for("views.home"))
 
     # Display form to user
-    return render_template("register.html")
+    return render_template("signup.html")

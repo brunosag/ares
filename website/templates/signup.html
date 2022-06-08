@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block navbar %}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="welcome">
+        <img class="welcome-logo" src="/static/images/logo.png" alt="Ares Workout">
+        <div class="welcome-headline">
+            <h1 class="welcome-title">Welcome to Ares</h1>
+            <h2 class="welcome-lead">Start tracking your workouts now!</h2>
+        </div>
+        <form class="welcome-form" method="POST">
+            <input class="text-input" type="email" placeholder="Email" name="email">
+            <input class="text-input" type="password" placeholder="Password" name="password">
+            <input class="text-input" type="password" placeholder="Confirm password" name="confirmation">
+            <button class="btn btn-primary" type="submit">Sign up</button>
+        </form>
+        <a href="#">Forgot password?</a>
+    </div>
+
+    <div class="bottom-text">
+        <p>Already have an account? <a class="text-primary" href="/signin">Sign in</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

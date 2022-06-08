@@ -1,97 +1,218 @@
-.handle {
-    cursor: grab;
+/* ==============
+   variables
+   ============== */
+
+:root {
+    --primary: linear-gradient(90deg, hsl(15, 90%, 55%), hsl(5, 90%, 55%));
+    --dark: hsl(0, 0%, 5%);
+    --light: hsl(0, 0%, 95%);
+    --secondary: hsl(0, 0%, 15%);
+    --tertiary: hsl(0, 0%, 35%);
+    --quaternary: hsl(0, 0%, 65%);
+    --text-on-dark: hsla(0, 0%, 95%, 0.5);
+    --text-on-primary: hsla(0, 0%, 95%, 0.6);
+    --input-icon: hsla(0, 0%, 95%, 0.1);
+    --input-label: hsla(0, 0%, 95%, 0.3);
+
+    --fs-12: .75rem;
+    --fs-13: .8125rem;
+    --fs-14: .875rem;
+    --fs-16: 1rem;
+    --fs-18: 1.125rem; 
+    --fs-24: 1.5rem;
+    --fs-28: 1.75rem;
+    --fs-32: 2rem;
+    --fs-36: 2.25rem;
+
+    --fw-regular: 400;
+    --fw-semibold: 600;
+    --fw-bold: 700;
 }
 
-input[name="exercise_name"] {
-    text-transform: uppercase;
+
+/* ==============
+   fonts
+   ============== */
+
+@font-face {
+    font-family: "AvertaStd";
+    src: url(/static/fonts/AvertaStd.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "AvertaStd";
+    src: url(/static/fonts/AvertaStd-Semibold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "AvertaStd";
+    src: url(/static/fonts/AvertaStd-Bold.ttf);
+    font-weight: 700;
+}
+
+
+/* ==============
+   resets
+   ============== */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    color: var(--light);
+    font-family: "AvertaStd", sans-serif;
+    text-decoration: none;
+}
+
+
+/* ==============
+   global styles
+   ============== */
+
+body {
+    background: var(--dark);
+}
+
+input {
+    background: var(--secondary);
+}
+
+.text-input,
+.btn {
+    border-radius: .75rem;
+}
+
+.text-input {
+    padding: .8125rem 1.25rem;
 }
 
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    border-radius: 0.7rem;
-    font-size: 0.84rem;
-    letter-spacing: 0.15rem;
-    height: 3.1rem;
-    font-weight: 500;
-}
-
-html, body {
-    height: 100%;
-}
-
-.container-body {
-    min-height: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
+    padding: .78125rem;
     text-align: center;
 }
 
-.cotainer-flex {
-    display: flex;
-    flex-direction: column;
+.btn-primary {
+    background: var(--primary);
 }
 
-/* Index page */
-
-#logo-index {
-    margin-bottom: 2rem;
-    width: 220px;
-    height: 220px;
+.btn-secondary {
+    background: var(--secondary);
 }
 
-#subtitle-index {
-    font-weight: 400;
-    font-size: 1.3rem;
-    letter-spacing: 0.4rem;
-    margin-inline-start: 0.4rem;
-    margin-bottom: 0.1rem;
-    line-height: 1;
-    color: hsl(0, 0%, 30%);
-    flex-shrink: 1;
+.btn-tertiary {
+    background: var(--tertiary);
 }
 
-#title-index {
-    font-size: 3.1rem;
-    line-height: 1;
-    font-weight: bold;
-    margin-bottom: 5rem;
+
+/* ==============
+   typography
+   ============== */
+
+:root {
+    font-size: 16px;
 }
 
-.btn-index {
-    width: 16rem;
+p,
+a {
+    font-size: var(--fs-12);
 }
 
-@media all and (max-width: 530px) {
-
-    #logo-index {
-        margin-bottom: 6vw;
-        width: 40vw;
-        height: 40vw;
-    }
-
-    #subtitle-index {
-        font-size: 3.9vw;
-        letter-spacing: 1.2vw;
-        margin-inline-start: 1.2vw;
-        margin-bottom: 0.3vh;
-    }
-
-    #title-index {
-        font-size: 10.2vw;
-        margin-bottom: 15vw;
-    }
-
-    .btn-index {
-        border-radius: 2.1vw;
-        font-size: 2.4vw;
-        letter-spacing: 0.45vw;
-        height: 11vw;
-        width: 50vw;
-    }
-    
+a {
+    font-weight: var(--fw-semibold);
 }
+
+.btn {
+    font-size: var(--fs-14);
+    font-weight: var(--fw-semibold);
+}
+
+.welcome-title,
+.welcome-lead {
+    line-height: 1.25em;
+}
+
+.welcome-title {
+    font-size: var(--fs-28);
+    font-weight: var(--fw-bold);
+}
+
+.welcome-lead {
+    color: var(--text-on-dark);
+    font-size: var(--fs-14);
+    font-weight: var(--fw-regular);
+}
+
+.text-primary {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: var(--primary);
+    color: transparent;
+}
+
+.text-input::placeholder {
+    color: var(--input-label);
+    font-size: var(--fs-13);
+}
+
+
+/* ==============
+   layout
+   ============== */
+
+html,
+body,
+.container {
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto min-content;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.welcome {
+    align-self: center;
+    margin-top: 2.5rem;
+}
+
+.welcome > * {
+    display: block;
+    margin: 0 auto;
+}
+
+.welcome-logo {
+    width: 6.25rem;
+}
+
+.welcome-headline {
+    margin: 1.875rem 0 2.25rem 0;
+}
+
+.welcome-title {
+    margin-bottom: .3125rem;
+}
+
+.welcome-form > * {
+    display: block;
+    margin: 1rem auto;
+    width: min(20rem, 100%);
+}
+
+.bottom-text {
+    align-self: end;
+    margin-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+
+/* ==============
+   dekstop layout
+   ============== */
+
+@media screen and (min-width: 780px) {}

@@ -107,6 +107,10 @@ input {
     background: var(--tertiary);
 }
 
+.intro {
+    background: var(--primary);
+}
+
 
 /* ==============
    typography
@@ -130,20 +134,24 @@ a {
     font-weight: var(--fw-semibold);
 }
 
-.welcome-title,
+.title,
 .welcome-lead {
     line-height: 1.25em;
 }
 
-.welcome-title {
+.title {
     font-size: var(--fs-28);
     font-weight: var(--fw-bold);
 }
 
-.welcome-lead {
-    color: var(--text-on-dark);
+.welcome-lead,
+.intro-lead {
     font-size: var(--fs-14);
     font-weight: var(--fw-regular);
+}
+
+.welcome-lead {
+    color: var(--text-on-dark);
 }
 
 .text-primary {
@@ -158,6 +166,11 @@ a {
     font-size: var(--fs-13);
 }
 
+.intro-lead {
+    color: var(--text-on-primary);
+    max-width: 28rem;
+}
+
 
 /* ==============
    layout
@@ -165,28 +178,36 @@ a {
 
 html,
 body,
-.container {
+.container,
+.welcome {
     height: 100%;
 }
 
 .container {
-    display: grid;
-    grid-template-rows: auto min-content;
     padding: 0 40px;
     text-align: center;
 }
 
+.two-columns {
+    display: grid;
+}
+
 .welcome {
+    display: grid;
+    grid-template-rows: auto min-content;
+}
+
+.welcome-top {
     align-self: center;
     margin-top: 2.5rem;
 }
 
-.welcome > * {
+.welcome-top > * {
     display: block;
     margin: 0 auto;
 }
 
-.welcome-logo {
+.welcome-image {
     width: 6.25rem;
 }
 
@@ -194,7 +215,7 @@ body,
     margin: 1.875rem 0 2.25rem 0;
 }
 
-.welcome-title {
+.title {
     margin-bottom: .3125rem;
 }
 
@@ -204,10 +225,21 @@ body,
     width: min(20rem, 100%);
 }
 
-.bottom-text {
+.welcome-bottom {
     align-self: end;
     margin-top: 2.5rem;
     padding-bottom: 2.5rem;
+}
+
+.intro {
+    display: none;
+    padding: 40px;
+    place-items: center;
+}
+
+.intro-image {
+    margin-bottom: 3rem;
+    max-width: 23rem;
 }
 
 
@@ -215,4 +247,15 @@ body,
    dekstop layout
    ============== */
 
-@media screen and (min-width: 780px) {}
+@media screen and (min-width: 1120px) {
+
+    .two-columns {
+        grid-template-columns: repeat(2, 50%);
+        padding: 0;
+    }
+
+    .intro {
+        display: grid;
+    }
+
+}

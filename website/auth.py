@@ -24,8 +24,8 @@ def index():
         return redirect(url_for("auth.signup"))
 
 
-@auth.route('/login', methods=["GET", "POST"])
-def login():
+@auth.route('/signin', methods=["GET", "POST"])
+def signin():
     if request.method == "POST":
 
         # Collect form information
@@ -60,7 +60,7 @@ def login():
             flash("Email does not exist.", category="error")
 
     # Display form to user
-    return render_template("login.html")
+    return render_template("signin.html")
 
 
 @auth.route('/logout')

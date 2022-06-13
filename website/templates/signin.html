@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} | Sign In{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body %}
+
+<div class="container two-columns">
+
+    <div class="intro">
+        <div class="intro-content">
+            <img class="intro-image" src="/static/images/intro.png" alt="Man working out">
+            <h1 class="title">Never lose track</h1>
+            <p class="intro-lead">For those who want to focus only on performing their absolute best. Have your exercises, weights, and machine adjustments for multiple workouts, all in one place, so you can get straight to work!</p>
+        </div>
+    </div>
+
+    <div class="welcome">
+        <div class="welcome-top">
+            <img class="welcome-image" src="/static/images/logo.png" alt="Ares Workout Logo">
+            <div class="welcome-headline">
+                <h1 class="title">Sign in to Ares</h1>
+                <p class="welcome-lead">Welcome back! Please enter your details.</p>
+            </div>
+            <form class="welcome-form" method="POST">
+                <input class="text-input" type="email" placeholder="Email" name="email">
+                <input class="text-input" type="password" placeholder="Password" name="password">
+                <button class="btn btn-primary" type="submit">Sign in</button>
+            </form>
+            <a href="#">Forgot password?</a>
+        </div>
+        <div class="welcome-bottom">
+            <p>Don't have an account? <a class="text-primary" href="/signup">Sign up</a></p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

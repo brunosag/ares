@@ -25,7 +25,7 @@ def create_app():
     create_database(app)
 
     login_manager = LoginManager()
-    login_manager.login_view = "auth.index"
+    login_manager.login_view = "auth.signup"
     login_manager.login_message = ""
     login_manager.init_app(app)
 

@@ -81,13 +81,15 @@ input {
 }
 
 a,
-.btn {
+.btn,
+.btn-edit {
     transition: all 200ms ease-in-out;
 }
 
 a:hover,
-.btn:hover {
-    filter: brightness(80%);
+.btn:hover,
+.btn-edit:hover {
+    filter: brightness(120%);
 }
 
 .no-hover:hover {
@@ -139,6 +141,13 @@ a:hover,
     width: 1.5rem;
 }
 
+.btn-edit {
+    border-radius: .75rem;
+    cursor: pointer;
+    height: 2.125rem;
+    width: 2.125rem;
+}
+
 
 /* ==============
    typography
@@ -158,6 +167,11 @@ a {
 }
 
 h1 {
+    font-weight: var(--fw-bold);
+}
+
+h2 {
+    font-size: var(--fs-24);
     font-weight: var(--fw-bold);
 }
 
@@ -225,6 +239,16 @@ i {
     font-weight: var(--fw-bold);
 }
 
+.workout-lead {
+    color: var(--text-on-primary);
+    font-size: var(--fs-16);
+    font-weight: var(--fw-regular);
+}
+
+.btn-edit > * {
+    font-size: var(--fs-16);
+    color: var(--quaternary);
+}
 
 /* ==============
    layout
@@ -238,7 +262,7 @@ body,
 }
 
 .container {
-    padding: 0 40px;
+    padding: 0 2.5rem;
     text-align: center;
 }
 
@@ -273,10 +297,15 @@ body,
     margin-bottom: .3125rem;
 }
 
-.welcome-form > * {
+.welcome-form > *,
+.btn {
     display: block;
+    width: min(100%, 20rem);
+    margin: 0 auto .75rem auto;
+}
+
+.welcome-form > * {
     margin: 1rem auto;
-    width: min(20rem, 100%);
 }
 
 .welcome-bottom {
@@ -287,7 +316,7 @@ body,
 
 .intro {
     display: none;
-    padding: 40px;
+    padding: 2.5rem;
     place-items: center;
 }
 
@@ -300,18 +329,50 @@ body,
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 2.5rem;
+    position: relative;
+    z-index: 10;
 }
 
 .nav-menu {
-    list-style-type: none;
     display: flex;
     gap: 2.5rem;
+    list-style-type: none;
 }
 
 .nav-toggle,
 .nav-toggle-label {
     display: none;
+}
+
+.workout,
+.btn-workout,
+.buttons > * {
+    width: min(100%, 24rem);
+}
+
+.workout {
+    margin: 0 auto 2.5rem auto;
+    position: relative;
+}
+
+.btn-workout {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: .8125rem;
+    padding: 2rem 1.625rem;
+}
+
+.btn-edit {
+    position: absolute;
+    right: 1.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.buttons {
+    padding-bottom: 2.5rem;
 }
 
 
@@ -343,16 +404,16 @@ body,
 
     .nav-menu {
         background-color: var(--dark);
+        filter: drop-shadow(0 0.25rem 0.5rem black);
         flex-direction: column;
         gap: 0;
         left: 0;
-        position: fixed;
+        position: absolute;
         text-align: center;
         top: -6rem;
         transform: translateZ(-10px);
-        transition: all 200ms ease-in-out;
+        transition: top 200ms ease-in-out;
         width: 100%;
-        filter: drop-shadow(0 0.25rem 0.5rem black);
     }
 
     .nav-toggle:checked ~ .nav-menu {

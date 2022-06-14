@@ -9,21 +9,6 @@ from flask_login import login_user, login_required, logout_user, current_user
 auth = Blueprint('auth', __name__)
 
 
-@auth.route("/")
-def index():
-
-    # Check if user is already logged in
-    if current_user.is_authenticated:
-
-        # Display home page to user
-        return render_template("home.html", user=current_user)
-
-    else:
-
-        # Redirect user to sign-up page
-        return redirect(url_for("auth.signup"))
-
-
 @auth.route('/signin', methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
@@ -51,7 +36,7 @@ def signin():
 
                 # Log user in
                 login_user(user, remember=True)
-                return redirect(url_for("auth.index"))
+                return redirect(url_for("views.home"))
             
             else:
                 flash("Incorrect password. Try again.", category="error")
@@ -70,8 +55,8 @@ def logout():
     # Log user out
     logout_user()
 
-    # Redirect user to index page
-    return redirect(url_for("auth.index"))
+    # Redirect user to sign-in page
+    return redirect(url_for("auth.signin"))
 
 
 @auth.route('/signup', methods=["GET", "POST"])

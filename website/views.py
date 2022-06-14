@@ -7,14 +7,6 @@ from . import db
 views = Blueprint('views', __name__)
 
 
-@views.route("/home")
-@login_required
-def home():
-
-    # Display form to user
-    return render_template("home.html", user=current_user)
-
-
 @views.route("/workout", methods=["GET", "POST"])
 @login_required
 def workout():

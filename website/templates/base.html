@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 
-        <!-- Required meta tags -->
+        <!-- Meta Tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,31 +29,28 @@
     <body>
 
         {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <a href="/home" class="navbar-brand">
-                    ARES
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse text-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        {% block active %}
+            <nav class="navbar">
+                <a href="/" class="nav-branding no-hover">Ares</a>
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <ul class="nav-menu">
+                    {% block active %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/home">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/workout">Workout</a>
                         </li>
-                        {% endblock %}
-                        <li>
-                            <a class="nav-link text-danger" href="/logout">Logout</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                    {% endblock %}
+                </ul>
+                <label for="nav-toggle" class="nav-toggle-label">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </label>
+            </nav>
         {% endblock %}
 
         {% with messages = get_flashed_messages(with_categories=true) %}

@@ -15,8 +15,8 @@ def index():
     # Check if user is already logged in
     if current_user.is_authenticated:
 
-        # Redirect user to home page
-        return redirect(url_for("views.home"))
+        # Display home page to user
+        return render_template("home.html", user=current_user)
 
     else:
 
@@ -51,7 +51,7 @@ def signin():
 
                 # Log user in
                 login_user(user, remember=True)
-                return redirect(url_for("views.home"))
+                return redirect(url_for("auth.index"))
             
             else:
                 flash("Incorrect password. Try again.", category="error")

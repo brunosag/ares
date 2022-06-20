@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<div class="container two-columns">
+<div class="container two-columns full-height">
 
     <div class="intro">
         <div class="intro-content">
@@ -24,8 +24,14 @@
                 <p class="welcome-lead">Welcome back! Please enter your details.</p>
             </div>
             <form class="welcome-form" method="POST">
-                <input class="text-input" type="email" placeholder="Email" name="email">
-                <input class="text-input" type="password" placeholder="Password" name="password">
+                <div class="input-with-icon">
+                    <input class="text-input" type="email" placeholder="Email" name="email">
+                    <i class="input-icon fa-solid fa-envelope"></i>
+                </div>
+                <div class="input-with-icon">
+                    <input class="text-input" type="password" placeholder="Password" name="password">
+                    <i class="input-icon fa-solid fa-lock"></i>
+                </div>
                 <button class="btn btn-primary" type="submit">Sign in</button>
             </form>
             <a href="#">Forgot password?</a>

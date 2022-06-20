@@ -58,14 +58,14 @@
    ============== */
 
 * {
-    margin: 0;
-    padding: 0;
+    -webkit-tap-highlight-color: transparent;
     border: 0;
     box-sizing: border-box;
     color: var(--light);
     font-family: "AvertaStd", sans-serif;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -74,7 +74,7 @@
    ============== */
 
 *:focus {
-    filter: brightness(120%);
+    filter: brightness(110%);
     outline: none;
 }
 
@@ -85,6 +85,16 @@ body {
 input,
 select {
     background-color: var(--secondary);
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--light);
+    -webkit-box-shadow: 0 0 0px 1000px var(--secondary) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+::-ms-reveal {
+    display: none;
 }
 
 a,
@@ -235,9 +245,18 @@ select {
     color: transparent;
 }
 
+.text-input,
+.text-input::placeholder,
+.input-icon {
+    font-size: var(--fs-13);
+}
+
+.input-icon {
+    color: var(--input-icon);
+}
+
 .text-input::placeholder {
     color: var(--input-label);
-    font-size: var(--fs-13);
 }
 
 .intro-lead {
@@ -318,9 +337,12 @@ input.details {
 
 html,
 body,
-.container,
 .welcome {
     height: 100%;
+}
+
+body {
+    text-align: center;
 }
 
 select {
@@ -330,14 +352,17 @@ select {
     margin: 0 auto .75rem auto;
 }
 
+.container {
+    padding: 0 2.5rem;
+}
+
+.full-height {
+    height: 100%;
+}
+
 a.btn {
     display: block;
     margin: 0 auto .75rem auto;
-}
-
-.container {
-    padding: 0 2.5rem;
-    text-align: center;
 }
 
 .two-columns {
@@ -367,8 +392,19 @@ a.btn {
     margin: 1.875rem 0 2.25rem 0;
 }
 
+.input-with-icon {
+    position: relative;
+}
+
 .text-input {
-    padding: .8125rem 1.25rem;
+    padding: .8125rem 1.25rem .8125rem 2.5rem;
+}
+
+.input-icon {
+    left: .875rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .title {
@@ -376,8 +412,13 @@ a.btn {
 }
 
 .welcome-form,
-.welcome-form > * {
+.welcome-form > *,
+.welcome-form .text-input {
     width: min(100%, 20rem) !important;
+}
+
+.welcome-form,
+.welcome-form > * {
     margin: 0 auto .75rem auto;
 }
 
@@ -510,7 +551,6 @@ input.details {
 .details {
     margin-left: auto;
 }
-
 
 /* ==============
    media queries

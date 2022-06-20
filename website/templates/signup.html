@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<div class="container two-columns">
+<div class="container two-columns full-height">
 
     <div class="welcome">
         <div class="welcome-top">
@@ -16,9 +16,18 @@
                 <p class="welcome-lead">Start tracking your workouts now!</p>
             </div>
             <form class="welcome-form" method="POST">
-                <input class="text-input" type="email" placeholder="Email" name="email">
-                <input class="text-input" type="password" placeholder="Password" name="password">
-                <input class="text-input" type="password" placeholder="Confirm password" name="confirmation">
+                <div class="input-with-icon">
+                    <input class="text-input" type="email" placeholder="Email" name="email">
+                    <i class="input-icon fa-solid fa-envelope"></i>
+                </div>
+                <div class="input-with-icon">
+                    <input class="text-input" type="password" placeholder="Password" name="password">
+                    <i class="input-icon fa-solid fa-lock"></i>
+                </div>
+                <div class="input-with-icon">
+                    <input class="text-input" type="password" placeholder="Confirm password" name="confirmation">
+                    <i class="input-icon fa-solid fa-lock"></i>
+                </div>
                 <button class="btn btn-primary" type="submit">Sign up</button>
             </form>
         </div>

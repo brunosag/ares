@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-
+    
     <div class="container">
 
         <!-- Workouts -->
@@ -32,16 +32,14 @@
                 </form>
             </div>
         {% endfor %}
-
         <!-- Buttons -->
         <div class="buttons">
             <a class="btn btn-tertiary" href="/new-workout" role="button">Add workout</a>
             <button type="button" class="btn btn-secondary">Change order</button>
         </div>
-
+        <!-- JavaScript -->
+        <script type="text/javascript" src="/static/js/home.js"></script>
+        
     </div>
-
-    <!-- JavaScript -->
-    <script type="text/javascript" src="/static/js/home.js"></script>
 
 {% endblock %}

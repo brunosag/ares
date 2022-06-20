@@ -14,48 +14,65 @@
 
 {% block body %}
 
-    <!-- Select workout -->
-    <select class="form-select form-select-lg mb-4" aria-label="Select workout" id="select_workout">
-        {% for workout in user.workouts %}
-            <option value="{{ workout.id }}">{{ workout.name }}</option>
-        {% endfor %}
-    </select>
+    <div class="container">
 
-    <!-- Exercises -->
-    {% for workout in user.workouts %}
-        <div class="workout {{ workout.id }}" hidden>
-            <form method="POST" autocomplete="off">
-                {% for exercise in workout.exercises %}
-                    <div class="mb-4">
-                        <h1 class="text-light">{{ exercise.name }}</h1>
-                        <div class="row align-items-end">
-                            <div class="col-auto">
-                                <input type="number" step="0.01" pattern="[0-9]+([\.,][0-9]+)?" class="form-control" placeholder="-" name="weight" value="{{ (exercise.weight | int) if (exercise.weight | float | is_integer) and (exercise.weight) else (exercise.weight) }}" disabled>
-                            </div>
-                            <div class="col-auto text-light p-0">
-                                kg
-                            </div>
-                            {% if exercise.include_details %}
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" placeholder="-" name="details" value="{{ exercise.details }}" disabled>
+        <!-- Select workout -->
+        <select aria-label="Select workout" id="select_workout">
+            {% for workout in user.workouts %}
+                <option value="{{ workout.id }}">{{ workout.name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Exercises -->
+        {% for workout in user.workouts %}
+            <div class="workout {{ workout.id }}" hidden>
+                <form method="POST" autocomplete="off">
+                    <div class="exercises">
+                        {% for exercise in workout.exercises %}
+                            <div class="exercise">
+                                <h2 class="exercise-name">{{ exercise.name }}</h2>
+                                <div class="exercise-values">
+                                    <div class="weight-span">
+                                        <span class="weight-value text-primary">
+                                            {% if (exercise.weight | float | is_integer) and (exercise.weight) or (exercise.weight == 0) %}
+                                                {{ exercise.weight | int }}
+                                            {% elif (exercise.weight == None) %}
+                                                --
+                                            {% else %}
+                                                {{ exercise.weight }}
+                                            {% endif %}
+                                        </span>
+                                        <span class="weight-unit">kg</span>
+                                    </div>
+                                    <div class="weight-input" hidden>
+                                        <input class="weight-value" type="number" step="0.01" pattern="[0-9]+([\.,][0-9]+)?" placeholder="-" name="weight" value="{{ (exercise.weight | int) if (exercise.weight | float | is_integer) and (exercise.weight) or (exercise.weight == 0) else (exercise.weight) }}">
+                                        <span class="weight-unit">kg</span>
+                                    </div>
+                                    {% if exercise.include_details %}
+                                        <input class="details" type="text" placeholder="-" name="details" value="{{ exercise.details }}" hidden>
+                                        <span class="details">{{ exercise.details }}</span>
+                                    {% else %}
+                                        <input type="hidden" name="details" value="">
+                                    {% endif %}
                                 </div>
-                            {% else %}
-                                <input type="hidden" name="details" value="">
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-                <button type="button" class="btn btn-secondary edit {{ workout.id }}">Edit</button>
-                <button type="submit" class="btn btn-primary save {{ workout.id }} mb-2" hidden>Save changes</button>
-                <input type="hidden" name="workout" value="{{ workout.id }}">
-                <input type="hidden" name="request_type" value="save">
-            </form>
-            <form method="POST">
-                <button type="submit" class="btn btn-light cancel {{ workout.id }}" name="workout" value="{{ workout.id }}" hidden>Cancel</button>
-                <input type="hidden" name="request_type" value="cancel">
-            </form>
-        </div>
-    {% endfor %}
+                    <button type="button" class="btn btn-primary edit {{ workout.id }}">Edit</button>
+                    <button type="submit" class="btn btn-primary save {{ workout.id }}" hidden>Save changes</button>
+                    <input type="hidden" name="workout" value="{{ workout.id }}">
+                    <input type="hidden" name="request_type" value="save">
+                </form>
+                <form method="POST">
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-tertiary cancel {{ workout.id }}" name="workout" value="{{ workout.id }}" hidden>Cancel</button>
+                    </div>
+                    <input type="hidden" name="request_type" value="cancel">
+                </form>
+            </div>
+        {% endfor %}
+
+    </div>
 
     <!-- JavaScript -->
     {% if displayRequested %}
@@ -74,8 +91,11 @@
                 document.getElementsByClassName("edit {{ workout.id }}")[0].hidden = true
                 document.getElementsByClassName("save {{ workout.id }}")[0].hidden = false
                 document.getElementsByClassName("cancel {{ workout.id }}")[0].hidden = false
-                for (let i = 0; i < document.getElementsByClassName("workout {{ workout.id }}")[0].getElementsByTagName("input").length; i++) {
-                    document.getElementsByClassName("workout {{ workout.id }}")[0].getElementsByTagName("input")[i].disabled = false
+                for (let i = 0; i < document.getElementsByClassName("workout {{ workout.id }}")[0].querySelectorAll(".weight-input, input.details").length; i++) {
+                    document.getElementsByClassName("workout {{ workout.id }}")[0].querySelectorAll(".weight-input, input.details")[i].hidden = false
+                }
+                for (let i = 0; i < document.getElementsByClassName("workout {{ workout.id }}")[0].querySelectorAll(".weight-span, span.details").length; i++) {
+                    document.getElementsByClassName("workout {{ workout.id }}")[0].querySelectorAll(".weight-span, span.details")[i].hidden = true
                 }
             })
         </script>

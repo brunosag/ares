@@ -18,7 +18,7 @@
 
         <!-- Workouts -->
         {% for workout in user.workouts %}
-            <div class="workout">
+            <div class="workout-wrapper">
                 <form action="/workout" method="POST">
                     <button type="submit" class="btn btn-primary btn-workout" name="workout" value="{{ workout.id }}">
                         <h2>{{ workout.name }}</h2>

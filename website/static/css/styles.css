@@ -18,7 +18,8 @@
     --fs-13: .8125rem;
     --fs-14: .875rem;
     --fs-16: 1rem;
-    --fs-18: 1.125rem; 
+    --fs-18: 1.125rem;
+    --fs-20: 1.25rem;
     --fs-24: 1.5rem;
     --fs-28: 1.75rem;
     --fs-32: 2rem;
@@ -121,6 +122,7 @@ select,
     border-radius: .75rem;
 }
 
+a,
 select,
 .btn,
 .btn-edit,
@@ -205,6 +207,24 @@ input.details {
 
 .checkbox > input:checked {
     background-color: var(--light);
+}
+
+.modal-container {
+    background-color: hsla(0, 0%, 0%, 92%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 100ms ease-in-out;
+}
+
+.modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    background-color: var(--dark);
+    border-radius: .75rem;
+    transition: all 400ms ease;
 }
 
 
@@ -389,6 +409,21 @@ input.details {
     font-weight: 900;
 }
 
+.modal-open {
+    color: var(--text-on-dark);
+    font-size: var(--fs-14);
+    text-decoration: underline;
+}
+
+.modal-title {
+    font-size: var(--fs-20);
+    font-weight: var(--fw-semibold);
+}
+
+.modal-text {
+    font-size: var(--fs-14);
+}
+
 
 /* ==============
    layout
@@ -412,7 +447,7 @@ select {
     border-right: 1.125rem solid transparent;
     padding: .625rem 1.25rem;
     display: block;
-    margin: 0 auto .75rem auto;
+    margin: 0 auto 2.5rem auto;
 }
 
 .container {
@@ -423,7 +458,7 @@ select {
     height: 100%;
 }
 
-a.btn {
+a[type="button"] {
     display: block;
     margin: 0 auto .75rem auto;
 }
@@ -494,9 +529,10 @@ a.btn {
 }
 
 .btn {
-    padding: .78125rem;
+    padding: .78125rem 1.25rem;
     text-align: center;
-    margin-bottom: .75rem;
+    margin: 0 auto .75rem auto;
+    display: block;
 }
 
 .welcome-bottom {
@@ -583,7 +619,7 @@ select,
 .exercises {
     display: grid;
     gap: .75rem;
-    margin: 2.5rem auto;
+    margin: 0 auto 2.5rem auto;
 }
 
 .exercise {
@@ -685,6 +721,42 @@ input.details {
     position: absolute;
     text-align: center;
     top: .1875rem;
+}
+
+.modal-container {
+    display: grid;
+    height: 100%;
+    left: 0;
+    padding: 0 1.5rem;
+    place-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    text-align: start;
+    transform: translateY(-5rem);
+    width: min(100%, 32rem);
+}
+
+.modal-container.show .modal {
+    transform: none;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: .75rem;
+}
+
+.modal-buttons button {
+    margin: 0;
+    width: auto;
 }
 
 

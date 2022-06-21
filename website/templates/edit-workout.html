@@ -1,101 +1,99 @@
 {% extends "base.html" %}
 
+{% block title %} | Edit Workout{% endblock %}
+
 {% block body %}
 
-    <!-- Select workout -->
-    <select class="form-select form-select-lg mb-4" aria-label="Select workout" id="select_workout">
-        {% for workout in user.workouts %}
-            <option value="{{ workout.id }}">{{ workout.name }}</option>
-        {% endfor %}
-    </select>
+    <div class="container">
 
-    <!-- Workout forms -->
-    {% for workout in user.workouts %}
-        <div class="mb-5 workout {{ workout.id }}"hidden>
-            <form autocomplete="off" method="POST">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="workout_name" placeholder="Workout name" value="{{ workout.name }}">
-                    <label for="workout_name">Workout name</label>
-                </div>
-                <div class="form-floating mb-5">
-                    <input type="text" class="form-control" name="workout_description" placeholder="Description" value="{{ workout.description }}">
-                    <label for="workout_description">Description</label>
-                </div>
-                <div class="exercises {{ workout.id }}">
-                    <div class="template {{ workout.id }}">
-                        <div class="exercise" hidden>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="exercise_name" placeholder="Exercise name" disabled>
-                                <label for="exercise_name">Exercise name</label>
-                            </div>
-                            <div class="form-check mb-3 text-light">
-                                <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
-                                <input class="include_details form-check-input" type="checkbox" value="1" name="include_details" disabled>
-                                <label class="form-check-label" for="include_details">Include details</label>
-                                <button type="button" class="delete ms-3 btn btn-secondary btn-sm">Delete exercise</button>
-                                <i class="handle ms-3 fa-solid fa-grip-lines"></i>
-                            </div>
-                            <div class="exercise-info">
-                                <input type="hidden" name="weight" value="None" disabled>
-                                <input type="hidden" name="details" disabled>
-                            </div>
-                        </div>
+        <!-- Select workout -->
+        <select aria-label="Select workout" id="select_workout">
+            {% for workout in user.workouts %}
+                <option value="{{ workout.id }}">{{ workout.name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Workout forms -->
+        {% for workout in user.workouts %}
+            <div class="workout {{ workout.id }}"hidden>
+                <form autocomplete="off" method="POST">
+                    <div class="workout-inputs">
+                        <input class="text-input" type="text" name="workout_name" placeholder="Workout name" value="{{ workout.name }}">
+                        <input class="text-input" type="text" name="workout_description" placeholder="Description" value="{{ workout.description }}">
                     </div>
-                    {% for exercise in workout.exercises %}
-                        <div class="exercise">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="exercise_name" placeholder="Exercise name" value="{{ exercise.name }}">
-                                <label for="exercise_name">Exercise name</label>
-                            </div>
-                            <div class="form-check mb-3 text-light">
-                                <input class="include_details_hidden {{ exercise.id }}" type="hidden" value="0" name="include_details">
-                                <input class="include_details {{ exercise.id }} form-check-input" type="checkbox" value="1" name="include_details">
-                                <label class="form-check-label" for="include_details">Include details</label>
-                                <button type="button" class="delete ms-3 btn btn-secondary btn-sm">Delete exercise</button>
-                                <i class="handle ms-3 fa-solid fa-grip-lines"></i>
-                            </div>
-                            <div class="exercise-info">
-                                <input type="hidden" name="weight" value="{{ exercise.weight }}">
-                                <input type="hidden" name="details" value="{{ exercise.details }}">
+                    <div class="exercises-edit {{ workout.id }}">
+                        <div class="template {{ workout.id }}">
+                            <div class="exercise-edit" hidden>
+                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" disabled>
+                                <div class="exercise-edit-options">
+                                    <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
+                                    <label class="checkbox">
+                                        <input class="include_details" type="checkbox" value="1" name="include_details" disabled>
+                                        <span>Include details</span>
+                                    </label>
+                                    <i class="handle fa-solid fa-grip-lines"></i>
+                                    <i class="delete fa-solid fa-xmark"></i>
+                                </div>
+                                <div class="exercise-info" hidden>
+                                    <input type="hidden" name="weight" value="None" disabled>
+                                    <input type="hidden" name="details" disabled>
+                                </div>
                             </div>
                         </div>
-                    {% endfor %}
+                        {% for exercise in workout.exercises %}
+                            <div class="exercise-edit">
+                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" value="{{ exercise.name }}">
+                                <div class="exercise-edit-options">
+                                    <input class="include_details_hidden {{ exercise.id }}" type="hidden" value="0" name="include_details">
+                                    <label class="checkbox">
+                                        <input class="include_details {{ exercise.id }}" type="checkbox" value="1" name="include_details">
+                                        <span>Include details</span>
+                                    </label>
+                                    <i class="handle fa-solid fa-grip-lines"></i>
+                                    <i class="delete fa-solid fa-xmark"></i>
+                                </div>
+                                <div class="exercise-info" hidden>
+                                    <input type="hidden" name="weight" value="{{ exercise.weight }}">
+                                    <input type="hidden" name="details" value="{{ exercise.details }}">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="btn btn-secondary add {{ workout.id }}" title="Add exercise">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button class="btn btn-primary save {{ workout.id }}" type="submit">Save changes</button>
+                    <div class="workout-info" hidden>
+                        <input type="hidden" name="workout" value="{{ workout.id }}">
+                        <input type="hidden" name="request_type" value="save">
+                    </div>
+                </form>
+                <form method="POST">
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-tertiary cancel {{ workout.id }}" name="workout" value="{{ workout.id }}">Cancel</button>
+                        <input type="hidden" name="request_type" value="cancel">
+                    </div>
+                </form>
+                <div class="buttons">
+                    <a class="modal-open {{ workout.id }}" type="button">Delete workout</a>
                 </div>
-                <button class="btn btn-secondary mb-2 add {{ workout.id }}" type="button">Add exercise</button>
-                <button class="btn btn-primary mb-2 save {{ workout.id }}" type="submit">Save changes</button>
-                <div class="workout-info">
-                    <input type="hidden" name="workout" value="{{ workout.id }}">
-                    <input type="hidden" name="request_type" value="save">
-                </div>
-            </form>
-            <form method="POST">
-                <button type="submit" class="btn btn-light cancel {{ workout.id }}" name="workout" value="{{ workout.id }}">Cancel</button>
-                <input type="hidden" name="request_type" value="cancel">
-            </form>
-            <a type="button" class="link-danger" data-bs-toggle="modal" data-bs-target="#modal{{ workout.id }}">Delete workout</a>
-            <div class="modal fade" id="modal{{ workout.id }}" tabindex="-1" aria-labelledby="modalLabel{{ workout.id }}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabel{{ workout.id }}">Delete workout</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Do you really wish to delete this workout? This cannot be undone.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form method="POST">
-                                <button type="submit" class="btn btn-danger" name="workout" value="{{ workout.id }}">Delete workout</button>
-                                <input type="hidden" name="request_type" value="delete">
-                            </form>
-                        </div>
+            </div>
+            <div class="modal-container {{ workout.id }}">
+                <div class="modal">
+                    <h2 class="modal-title">Delete workout</h2>
+                    <p class="modal-text">Do you really wish to delete the workout? This cannot be undone.</p>
+                    <div class="modal-buttons">
+                        <form method="POST">
+                            <button type="submit" class="btn btn-primary" name="workout" value="{{ workout.id }}">Delete</button>
+                            <input type="hidden" name="request_type" value="delete">
+                        </form>
+                        <button type="button" class="modal-close {{ workout.id }} btn btn-secondary">Cancel</button>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
 
-    {% endfor %}
+    </div>
 
     <!-- JavaScript -->
     {% if displayRequested %}
@@ -111,13 +109,13 @@
         <script>
 
             /* Handle first hidden inputs for include_details */
-            for (let i = 1; i < document.getElementsByClassName("exercises {{ workout.id }}")[0].getElementsByClassName("include_details").length; i++) {
-                document.getElementsByClassName("exercises {{ workout.id }}")[0].getElementsByClassName("include_details")[i].addEventListener("change", function() {
-                    if (document.getElementsByClassName("exercises {{ workout.id }}")[0].getElementsByClassName("include_details")[i].checked) {
-                        document.getElementsByClassName("exercises {{ workout.id }}")[0].getElementsByClassName("include_details_hidden")[i].disabled = true
+            for (let i = 1; i < document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].getElementsByClassName("include_details").length; i++) {
+                document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].getElementsByClassName("include_details")[i].addEventListener("change", function() {
+                    if (document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].getElementsByClassName("include_details")[i].checked) {
+                        document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].getElementsByClassName("include_details_hidden")[i].disabled = true
                     }
                     else {
-                        document.getElementsByClassName("exercises {{ workout.id }}")[0].getElementsByClassName("include_details_hidden")[i].disabled = false
+                        document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].getElementsByClassName("include_details_hidden")[i].disabled = false
                     }
                 })
             }
@@ -126,7 +124,7 @@
             document.getElementsByClassName("add {{ workout.id }}")[0].addEventListener("click", function() {
 
                 /* Clone template */
-                var template = document.getElementsByClassName("template {{ workout.id }}")[0].getElementsByClassName("exercise")[0]
+                var template = document.getElementsByClassName("template {{ workout.id }}")[0].getElementsByClassName("exercise-edit")[0]
                 var clone = template.cloneNode(true)
 
                 /* Show and enable inputs */
@@ -155,15 +153,22 @@
                 })
 
                 /* Add to exercises */
-                document.getElementsByClassName("exercises {{ workout.id }}")[0].appendChild(clone)
+                document.getElementsByClassName("exercises-edit {{ workout.id }}")[0].appendChild(clone)
 
             })
 
             /* Create sortable list */
-            var exercise_list = document.getElementsByClassName("exercises {{ workout.id }}")[0]
-            new Sortable(exercise_list, {
+            new Sortable(document.getElementsByClassName("exercises-edit {{ workout.id }}")[0], {
                 animation: 250,
                 handle: ".handle"
+            })
+
+            /* Delete-exercise modal */
+            document.getElementsByClassName("modal-open {{ workout.id }}")[0].addEventListener("click", () => {
+                document.getElementsByClassName("modal-container {{ workout.id }}")[0].classList.add("show")
+            })
+            document.getElementsByClassName("modal-close {{ workout.id }}")[0].addEventListener("click", () => {
+                document.getElementsByClassName("modal-container {{ workout.id }}")[0].classList.remove("show")
             })
 
         </script>

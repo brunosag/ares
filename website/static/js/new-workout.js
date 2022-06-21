@@ -25,7 +25,7 @@ for (let i = 0; i < delete_buttons.length; i++) {
 add_exercise.addEventListener("click", function() {
 
     /* Clone template */
-    var template = document.getElementById("template").querySelector(".exercise")
+    var template = document.getElementById("template").querySelector(".exercise-edit")
     var clone = template.cloneNode(true)
 
     /* Show and enable inputs */
@@ -61,5 +61,5 @@ add_exercise.addEventListener("click", function() {
 /* Create sortable list */
 new Sortable(exercises, {
     animation: 250,
-    handle: ".handle"
+    handle: ".handle",
 })

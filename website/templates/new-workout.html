@@ -1,54 +1,55 @@
 {% extends "base.html" %}
 
+{% block title %} | New Workout{% endblock %}
+
 {% block body %}
 
-    <!-- Workout form -->
-    <form class="mb-5" id="workout" autocomplete="off" method="POST">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="workout_name" placeholder="Workout name">
-            <label for="workout_name">Workout name</label>
-        </div>
-        <div class="form-floating mb-5">
-            <input type="text" class="form-control" name="workout_description" placeholder="Description">
-            <label for="workout_description">Description</label>
-        </div>
-        <div id="template">
-            <div class="exercise" hidden>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="exercise_name" placeholder="Exercise name" disabled>
-                    <label for="exercise_name">Exercise name</label>
-                </div>
-                <div class="form-check mb-3 text-light">
-                    <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
-                    <input class="include_details form-check-input" type="checkbox" value="1" name="include_details" disabled>
-                    <label class="form-check-label" for="include_details">Include details</label>
-                    <button type="button" class="delete ms-3 btn btn-secondary btn-sm">Delete exercise</button>
-                    <i class="handle ms-3 fa-solid fa-grip-lines"></i>
+    <div class="container">
+
+        <!-- Workout form -->
+        <form id="workout" autocomplete="off" method="POST">
+            <div class="workout-inputs">
+                <input class="text-input" type="text" name="workout_name" placeholder="Workout name">
+                <input class="text-input" type="text" name="workout_description" placeholder="Description">
+            </div>
+            <div id="template">
+                <div class="exercise-edit" hidden>
+                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" disabled>
+                    <div class="exercise-edit-options">
+                        <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
+                        <label class="checkbox">
+                            <input class="include_details" type="checkbox" value="1" name="include_details" disabled>
+                            <span>Include details</span>
+                        </label>
+                        <i class="handle fa-solid fa-grip-lines"></i>
+                        <i class="delete fa-solid fa-xmark"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="exercises">
-            <div class="exercise">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="exercise_name" placeholder="Exercise name">
-                    <label for="exercise_name">Exercise name</label>
-                </div>
-                <div class="form-check mb-3 text-light">
-                    <input class="include_details_hidden" type="hidden" value="0" name="include_details">
-                    <input class="include_details form-check-input" type="checkbox" value="1" name="include_details">
-                    <label class="form-check-label" for="include_details">Include details</label>
-                    <button type="button" class="delete ms-3 btn btn-secondary btn-sm">Delete exercise</button>
-                    <i class="handle ms-3 fa-solid fa-grip-lines"></i>
+            <div id="exercises" class="exercises-edit">
+                <div class="exercise-edit">
+                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name">
+                    <div class="exercise-edit-options">
+                        <input class="include_details_hidden" type="hidden" value="0" name="include_details">
+                        <label class="checkbox">
+                            <input class="include_details" type="checkbox" value="1" name="include_details">
+                            <span>Include details</span>
+                        </label>
+                        <i class="handle fa-solid fa-grip-lines"></i>
+                        <i class="delete fa-solid fa-xmark"></i>
+                    </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-secondary" id="add_exercise" title="Add exercise">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </form>
+        <div class="buttons">
+            <button type="submit" class="btn btn-primary" form="workout">Save workout</button>
+            <a href="/" class="btn btn-tertiary cancel">Cancel</a>
         </div>
-    </form>
 
-    <!-- Add exercise -->
-    <button type="button" class="btn btn-light" id="add_exercise">Add exercise</button>
-
-    <!-- Save changes -->
-    <button type="submit" class="btn btn-primary" form="workout">Save workout</button>
+    </div>
 
     <!-- JavaScript -->
     <script type="text/javascript" src="/static/js/new-workout.js"></script>

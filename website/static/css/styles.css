@@ -101,7 +101,7 @@ a,
 select,
 .btn,
 .btn-edit {
-    transition: all 200ms ease-in-out;
+    transition: filter 200ms ease-in-out;
 }
 
 a:hover,
@@ -175,6 +175,37 @@ input.details {
     margin: 0;
 }
 
+.exercise-edit {
+    background: var(--primary);
+    border-radius: .75rem;
+}
+
+.handle,
+.delete,
+.checkbox,
+.checkbox > input {
+    cursor: pointer;
+}
+
+.handle,
+.delete {
+    transition: transform 100ms ease-in-out;
+}
+
+.handle:hover,
+.delete:hover {
+    transform: scale(115%);
+}
+
+.checkbox > input {
+    appearance: none;
+    background-color: var(--secondary);
+    border-radius: .3125rem;
+}
+
+.checkbox > input:checked {
+    background-color: var(--light);
+}
 
 
 /* ==============
@@ -326,6 +357,38 @@ input.details {
     color: var(--tertiary);
 }
 
+.exercise-edit-name,
+.exercise-edit-name::placeholder {
+    font-size: var(--fs-13);
+}
+
+.exercise-edit-name {
+    text-transform: uppercase;
+}
+
+.exercise-edit-name::placeholder {
+    color: var(--input-label);
+    text-transform: none;
+}
+
+.exercise-edit-options .handle,
+.exercise-edit-options .delete {
+    font-size: var(--fs-18);
+}
+
+.checkbox > span {
+    color: var(--text-on-primary);
+    font-size: var(--fs-13);
+}
+
+.checkbox > input:checked + span::before {
+    color: var(--quaternary);
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-size: .625rem;
+    font-weight: 900;
+}
+
 
 /* ==============
    layout
@@ -397,7 +460,11 @@ a.btn {
 }
 
 .text-input {
-    padding: .8125rem 1.25rem .8125rem 2.5rem;
+    padding: .8125rem 1.25rem .8125rem 1.25rem;
+}
+
+.input-with-icon .text-input {
+    padding-left: 2.5rem;
 }
 
 .input-icon {
@@ -473,8 +540,10 @@ select,
 .workout-wrapper,
 .btn,
 .exercises,
-.exercise {
-    width: min(100%, 24rem);
+.exercises-edit,
+.exercise,
+.workout-inputs > * {
+    width: min(100%, 26rem);
 }
 
 .workout-wrapper {
@@ -551,6 +620,73 @@ input.details {
 .details {
     margin-left: auto;
 }
+
+.workout-inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.exercises-edit {
+    display: grid;
+    gap: .75rem;
+    margin: 2.5rem auto .75rem auto;
+}
+
+.exercises-edit + button {
+    margin-bottom: 2.5rem;
+}
+
+.exercise-edit {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    gap: .75rem;
+}
+
+.exercise-edit-name {
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    width: 100%;
+}
+
+.exercise-edit-options {
+    display: flex;
+    align-items: center;
+}
+
+.exercise-edit-options .handle {
+    margin-left: auto;
+}
+
+.exercise-edit-options .delete {
+    margin-left: 1.5rem;
+}
+
+.checkbox {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+}
+
+.checkbox > span {
+    padding-left: .25rem;
+}
+
+.checkbox > input {
+    height: 1rem;
+    width: 1rem;
+}
+
+.checkbox > input:checked + span::before {
+    display: block;
+    left: .21875rem;
+    position: absolute;
+    text-align: center;
+    top: .1875rem;
+}
+
 
 /* ==============
    media queries

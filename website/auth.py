@@ -84,6 +84,10 @@ def signup():
         elif not password:
             flash("Must provide a password.", category="error")
 
+        # Ensure password contains at least 8 characters
+        elif len(password) < 8:
+            flash("Password must cointain at least 8 characters.", category="error")
+
         # Ensure confirmation was submitted
         elif not confirmation:
             flash("Must confirm the password", category="error")

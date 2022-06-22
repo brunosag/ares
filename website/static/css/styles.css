@@ -642,8 +642,13 @@ select,
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    gap: .8125rem;
+    justify-content: space-between;
+    min-height: 8rem;
     padding: 2rem 1.625rem;
+}
+
+.btn-workout.no-description {
+    justify-content: center;
 }
 
 .hamburger-bar {

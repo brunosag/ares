@@ -14,32 +14,40 @@
 
 {% block body %}
     
-    <div class="container">
+<div class="container">
 
-        <!-- Workouts -->
-        {% for workout in user.workouts %}
-            <div class="workout-wrapper">
-                <form action="/workout" method="POST">
+    <!-- Workouts -->
+    {% for workout in user.workouts %}
+        <div class="workout-wrapper">
+            <form action="/workout" method="POST">
+                {% if workout.description %}
                     <button type="submit" class="btn btn-primary btn-workout" name="workout" value="{{ workout.id }}">
                         <h2>{{ workout.name }}</h2>
                         <p class="workout-lead">{{ workout.description }}</p>
                     </button>
-                </form>
-                <form action="/edit-workout" method="POST">
-                    <button title="Edit Workout" type="submit" class="btn-edit" name="workout" value="{{ workout.id }}">
-                        <i class="fa-solid fa-pen"></i>
+                {% else %}
+                    <button type="submit" class="btn btn-primary btn-workout no-description" name="workout" value="{{ workout.id }}">
+                        <h2>{{ workout.name }}</h2>
                     </button>
-                </form>
-            </div>
-        {% endfor %}
-        <!-- Buttons -->
-        <div class="buttons">
-            <a class="btn btn-tertiary" href="/new-workout" role="button">Add workout</a>
-            <button type="button" class="btn btn-secondary">Change order</button>
+                {% endif %}
+            </form>
+            <form action="/edit-workout" method="POST">
+                <button title="Edit Workout" type="submit" class="btn-edit" name="workout" value="{{ workout.id }}">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+            </form>
         </div>
-        <!-- JavaScript -->
-        <script type="text/javascript" src="/static/js/home.js"></script>
-        
+    {% endfor %}
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <a class="btn btn-tertiary" href="/new-workout" role="button">Add workout</a>
+        <button type="button" class="btn btn-secondary">Change order</button>
     </div>
+    
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript" src="/static/js/home.js"></script>
 
 {% endblock %}

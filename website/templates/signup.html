@@ -38,15 +38,15 @@
                     {% endif %}
                 {% endwith %}
                 <div class="input-with-icon">
-                    <input class="text-input" type="email" placeholder="Email" name="email" maxlength="50">
+                    <input class="text-input" type="email" placeholder="Email" name="email" maxlength="50" required>
                     <i class="input-icon fa-solid fa-envelope"></i>
                 </div>
                 <div class="input-with-icon">
-                    <input class="text-input" type="password" placeholder="Password" name="password" maxlength="50">
+                    <input class="text-input" type="password" placeholder="Password" name="password" minlength="8" maxlength="50" required>
                     <i class="input-icon fa-solid fa-lock"></i>
                 </div>
                 <div class="input-with-icon">
-                    <input class="text-input" type="password" placeholder="Confirm password" name="confirmation" maxlength="50">
+                    <input class="text-input" type="password" placeholder="Confirm password" name="confirmation" maxlength="50" required>
                     <i class="input-icon fa-solid fa-lock"></i>
                 </div>
                 <button class="btn btn-primary" type="submit">Sign up</button>

@@ -9,12 +9,12 @@
         <!-- Workout form -->
         <form id="workout" autocomplete="off" method="POST">
             <div class="workout-inputs">
-                <input class="text-input" type="text" name="workout_name" placeholder="Workout name" maxlength="12">
+                <input class="text-input" type="text" name="workout_name" placeholder="Workout name" maxlength="12" required>
                 <input class="text-input" type="text" name="workout_description" placeholder="Description" maxlength="18">
             </div>
             <div id="template">
                 <div class="exercise-edit" hidden>
-                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45" disabled>
+                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45" required disabled>
                     <div class="exercise-edit-options">
                         <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
                         <label class="checkbox">
@@ -28,7 +28,7 @@
             </div>
             <div id="exercises" class="exercises-edit">
                 <div class="exercise-edit">
-                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45">
+                    <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45" required>
                     <div class="exercise-edit-options">
                         <input class="include_details_hidden" type="hidden" value="0" name="include_details">
                         <label class="checkbox">

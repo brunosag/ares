@@ -18,13 +18,13 @@
             <div class="workout {{ workout.id }}"hidden>
                 <form autocomplete="off" method="POST">
                     <div class="workout-inputs">
-                        <input class="text-input" type="text" name="workout_name" placeholder="Workout name" value="{{ workout.name }}" maxlength="12">
+                        <input class="text-input" type="text" name="workout_name" placeholder="Workout name" value="{{ workout.name }}" maxlength="12" required>
                         <input class="text-input" type="text" name="workout_description" placeholder="Description" value="{{ workout.description }}" maxlength="18">
                     </div>
                     <div class="exercises-edit {{ workout.id }}">
                         <div class="template {{ workout.id }}">
                             <div class="exercise-edit" hidden>
-                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45" disabled>
+                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" maxlength="45" required disabled>
                                 <div class="exercise-edit-options">
                                     <input class="include_details_hidden" type="hidden" value="0" name="include_details" disabled>
                                     <label class="checkbox">
@@ -42,7 +42,7 @@
                         </div>
                         {% for exercise in workout.exercises %}
                             <div class="exercise-edit">
-                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" value="{{ exercise.name }}" maxlength="45">
+                                <input class="exercise-edit-name" type="text" name="exercise_name" placeholder="Exercise name" value="{{ exercise.name }}" maxlength="45" required>
                                 <div class="exercise-edit-options">
                                     <input class="include_details_hidden {{ exercise.id }}" type="hidden" value="0" name="include_details">
                                     <label class="checkbox">

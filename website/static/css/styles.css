@@ -102,14 +102,16 @@ input:-webkit-autofill {
 a,
 select,
 .btn,
-.btn-edit {
+.btn-edit,
+::-webkit-scrollbar-thumb {
     transition: filter 200ms ease-in-out;
 }
 
 a:hover,
 select:hover,
 .btn:hover,
-.btn-edit:hover {
+.btn-edit:hover,
+::-webkit-scrollbar-thumb:hover {
     filter: brightness(120%);
 }
 
@@ -247,6 +249,17 @@ input.details {
     background-color: var(--dark);
     border-radius: .75rem;
     transition: all 400ms ease;
+}
+
+::-webkit-scrollbar {
+    width: .5rem;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--input-icon);
+    border-radius: 100vw;
 }
 
 

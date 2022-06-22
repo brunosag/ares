@@ -39,7 +39,7 @@
                                             {% if (exercise.weight | float | is_integer) and (exercise.weight) or (exercise.weight == 0) %}
                                                 {{ exercise.weight | int }}
                                             {% elif (exercise.weight == None) %}
-                                                --
+                                                —
                                             {% else %}
                                                 {{ exercise.weight }}
                                             {% endif %}
@@ -52,7 +52,7 @@
                                     </div>
                                     {% if exercise.include_details %}
                                         <input class="details" type="text" placeholder="-" name="details" value="{{ exercise.details }}" hidden>
-                                        <span class="details">{{ exercise.details }}</span>
+                                        <span class="details">{{ exercise.details or "—" }}</span>
                                     {% else %}
                                         <input type="hidden" name="details" value="">
                                     {% endif %}

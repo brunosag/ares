@@ -16,6 +16,27 @@
                 <p class="welcome-lead">Start tracking your workouts now!</p>
             </div>
             <form class="welcome-form" method="POST">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category == "error" %}
+                                <div class="alert alert-error show" role="alert">
+                                    <span>{{ message }}</span>
+                                    <button type="button" class="alert-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success show" role="alert">
+                                    <span>{{ message }}</span>
+                                    <button type="button" class="alert-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="input-with-icon">
                     <input class="text-input" type="email" placeholder="Email" name="email" maxlength="50">
                     <i class="input-icon fa-solid fa-envelope"></i>
@@ -45,5 +66,8 @@
     </div>
 
 </div>
+
+<!-- JavaScript -->
+<script type="text/javascript" src="/static/js/alert.js"></script>
 
 {% endblock %}

@@ -91,6 +91,7 @@ select {
 input:-webkit-autofill {
     -webkit-text-fill-color: var(--light);
     -webkit-box-shadow: 0 0 0px 1000px var(--secondary) inset;
+    box-shadow: 0 0 0px 1000px var(--secondary) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -118,16 +119,37 @@ select:hover,
 
 select,
 .text-input,
-.btn {
+.btn,
+.alert {
     border-radius: .75rem;
 }
 
 a,
 select,
-.btn,
-.btn-edit,
-.nav-toggle-label {
+button {
     cursor: pointer;
+}
+
+.alert {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.alert.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.alert-success {
+    background-color: hsla(140, 90%, 55%, 0.5);
+}
+
+.alert-error {
+    background-color: hsla(0, 90%, 55%, 0.5);
+}
+
+.alert button {
+    background-color: transparent;
 }
 
 .btn-primary {
@@ -191,7 +213,7 @@ input.details {
 
 .handle,
 .delete {
-    transition: transform 100ms ease-in-out;
+    transition: transform 150ms ease-in-out;
 }
 
 .handle:hover,
@@ -262,6 +284,22 @@ select {
     color: var(--text-on-dark);
     font-size: var(--fs-18);
     font-weight: var(--fw-semibold);
+}
+
+.alert span {
+    color: var(--text-on-primary);
+    font-size: var(--fs-13);
+}
+
+.alert i {
+    color: var(--input-label);
+    font-size: var(--fs-18);
+    transition: all 150ms ease-in-out;
+}
+
+.alert i:hover {
+    color: var(--text-on-primary);
+    transform: scale(110%);
 }
 
 .btn {
@@ -458,6 +496,19 @@ select {
     height: 100%;
 }
 
+.alert {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: .8125rem 1.25rem;
+    position: absolute;
+    text-align: start;
+}
+
+.alert.show {
+    position: static;
+}
+
 a[type="button"] {
     display: block;
     margin: 0 auto .75rem auto;
@@ -495,7 +546,7 @@ a[type="button"] {
 }
 
 .text-input {
-    padding: .8125rem 1.25rem .8125rem 1.25rem;
+    padding: .8125rem 1.25rem;
 }
 
 .input-with-icon .text-input {

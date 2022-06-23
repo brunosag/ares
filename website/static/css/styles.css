@@ -126,7 +126,8 @@ select,
 
 a,
 select,
-button {
+button,
+.nav-toggle-label {
     cursor: pointer;
 }
 
@@ -878,9 +879,11 @@ input.details {
         transform: translateZ(-10px);
         transition: top 200ms ease-in-out;
         width: 100%;
+        pointer-events: none;
     }
 
     .nav-toggle:checked ~ .nav-menu {
+        pointer-events: auto;
         top: calc(6.875rem - 1px);
     }
 

@@ -102,16 +102,14 @@ input:-webkit-autofill {
 a,
 select,
 .btn,
-.btn-edit,
-::-webkit-scrollbar-thumb {
+.btn-edit {
     transition: filter 200ms ease-in-out;
 }
 
 a:hover,
 select:hover,
 .btn:hover,
-.btn-edit:hover,
-::-webkit-scrollbar-thumb:hover {
+.btn-edit:hover {
     filter: brightness(120%);
 }
 

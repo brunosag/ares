@@ -149,11 +149,6 @@ def edit_workout():
                 db.session.add(new_workout)
                 db.session.commit()
 
-                print(exercise_names)
-                print(include_details)
-                print(weight_list)
-                print(details_list)
-
                 # Add exercises to database
                 for i in range(len(exercise_names)):
                     if weight_list[i] == "None":

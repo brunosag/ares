@@ -6,9 +6,33 @@
 
     <div class="container">
 
+        <!-- Alerts -->
+
+
         <!-- Workout form -->
         <form id="workout" autocomplete="off" method="POST">
             <div class="workout-inputs">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category == "error" %}
+                                <div class="alert alert-error show" role="alert">
+                                    <span>{{ message }}</span>
+                                    <button type="button" class="alert-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success show" role="alert">
+                                    <span>{{ message }}</span>
+                                    <button type="button" class="alert-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}   
                 <input class="text-input" type="text" name="workout_name" placeholder="Workout name" maxlength="12" required>
                 <input class="text-input" type="text" name="workout_description" placeholder="Description" maxlength="18">
             </div>
@@ -53,5 +77,6 @@
 
     <!-- JavaScript -->
     <script type="text/javascript" src="/static/js/new-workout.js"></script>
+    <script type="text/javascript" src="/static/js/alert.js"></script>
 
 {% endblock %}

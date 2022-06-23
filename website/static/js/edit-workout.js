@@ -18,10 +18,10 @@ select_workout.addEventListener("change", function() {
     selected_workout.hidden = false
 })
 
-/* Add listeners for delete exercise buttons */
-var delete_buttons = document.getElementsByClassName("delete")
-for (let i = 0; i < delete_buttons.length; i++) {
-    delete_buttons[i].addEventListener("click", function() {
-        delete_buttons[i].parentElement.parentElement.remove()
+/* Listen for delete exercise buttons */
+var delete_buttons = document.querySelectorAll(".delete")
+delete_buttons.forEach(element => {
+    element.addEventListener("click", () => {
+        element.parentElement.parentElement.remove()
     })
-}
+});

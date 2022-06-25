@@ -16,6 +16,16 @@
 
 {% block body %}
 
+{% if not user.workouts %}
+    <div class="no-workouts">
+        <div class="no-workouts-text">
+            <h2 class="title">Create your first workout</h2>
+            <p class="welcome-lead">You don't have any workouts yet, start now!</p>
+        </div>
+        <a class="btn btn-secondary" href="/new-workout" role="button">Add workout</a>
+    </div>
+{% else %}
+
     <div class="container">
 
         <!-- Select workout -->
@@ -75,6 +85,8 @@
         {% endfor %}
 
     </div>
+
+{% endif %}
 
     <!-- JavaScript -->
     {% if displayRequested %}

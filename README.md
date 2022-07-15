@@ -14,6 +14,7 @@
 <p align="center">
     <a href="#about">About</a> •
     <a href="#features">Features</a> •
+    <a href="#video-demo">Video Demo</a> •
     <a href="#contributing">Contributing</a> •
     <a href="#license">License</a> •
     <a href="#acknowledgments">Acknowlegments</a> •

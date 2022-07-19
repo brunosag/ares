@@ -27,7 +27,7 @@
 
 There are many great workout trackers out there; however, I always finded myself going back to my good old notes after trying them out for a while, overwhelmed by their complexity. I just wanted a quick glance at my weigths and machine adjustments. So, that's exactly what I did!
 
-Ares is a minimal workout tracker built with Flask, Python, SQLite, JavaScript, and pure CSS. It allows you to store all your workouts with only the essential information; designed to be a practical solution for those who want to keep track of their progress, while maintaining efficiency.
+Ares is a minimal workout tracker built with Flask, Python, SQLAlchemy, JavaScript, and pure CSS. It allows users to create workouts with multiple exercises, on which they can store weights and details in; as well as dynamically switch between workouts to quickly use or edit them completely. Designed to be a practical solution for those who want to keep track of their progress, while maintaining efficiency.
 
 
 ### Built With

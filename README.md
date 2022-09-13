@@ -1,4 +1,3 @@
-
 <h1 align="center">
     <br>
     <a href="https://www.aresworkout.tk/">
@@ -29,34 +28,30 @@ There are many great workout trackers out there; however, I always finded myself
 
 Ares is a minimal workout tracker built with Flask, Python, SQLAlchemy, JavaScript, and pure CSS. It allows users to create workouts with multiple exercises, on which they can store weights and details in; as well as dynamically switch between workouts to quickly use or edit them completely. Designed to be a practical solution for those who want to keep track of their progress, while maintaining efficiency.
 
-
 ### Built With
 
-* [Flask](https://flask.palletsprojects.com/)
-* [Python](https://www.python.org/)
-* [JavaScript](https://www.javascript.com/)
-* [SQLite](https://www.sqlite.org/index.html)
-* [SQLAlchemy](https://www.sqlalchemy.org/)
-* [Figma](https://www.figma.com/ui-design-tool/)
-
+-   [Flask](https://flask.palletsprojects.com/)
+-   [Python](https://www.python.org/)
+-   [JavaScript](https://www.javascript.com/)
+-   [SQLAlchemy](https://www.sqlalchemy.org/)
+-   [PostgreSQL](https://www.postgresql.org/)
+-   [Figma](https://www.figma.com/ui-design-tool/)
 
 ## Features
 
-* Fully mobile-responsive
-* Authentication with email and password
-* Create workouts with name and description
-* Add and remove exercises with name and include details option
-* Dynamically reorder exercises with drag and drop
-* Edit workout after adding it + delete workout
-* Exercise list display with weights and details
-* Edit weights and details without leaving the workout page
-* Switch between workouts through select menu on both workout and edit-workout pages
-
+-   Fully mobile-responsive
+-   Authentication with email and password
+-   Create workouts with name and description
+-   Add and remove exercises with name and include details option
+-   Dynamically reorder exercises with drag and drop
+-   Edit workout after adding it + delete workout
+-   Exercise list display with weights and details
+-   Edit weights and details without leaving the workout page
+-   Switch between workouts through select menu on both workout and edit-workout pages
 
 ## Video Demo
 
 https://user-images.githubusercontent.com/97703272/176287446-cadcaab4-0c77-41ae-b85c-5afe05d0465a.mp4
-
 
 ## Contributing
 
@@ -69,19 +64,15 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-
 ## Acknowledgments
 
-* [SortableJS](https://github.com/SortableJS/Sortable)
-* [Werkzeug](https://werkzeug.palletsprojects.com)
-
+-   [SortableJS](https://github.com/SortableJS/Sortable)
+-   [Werkzeug](https://werkzeug.palletsprojects.com)
 
 ## Contact
 
 Bruno Samuel - [LinkedIn](https://www.linkedin.com/in/brunosag/) - brunosag@outlook.com.br
-

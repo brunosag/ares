@@ -8,6 +8,5 @@ def is_integer(a):
     return a.is_integer()
 
 
-# When file is ran, run web server
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

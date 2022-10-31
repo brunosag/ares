@@ -2,6 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import environ
+import os
 
 db = SQLAlchemy()
 
@@ -11,9 +12,9 @@ environ.Env.read_env()
 
 def create_app():
     app = Flask(__name__)
-    app.debug = env('DEBUG')
-    app.config['SECRET_KEY'] = env('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = env('SQLALCHEMY_DATABASE_URI')
+    DEBUG = 'RENDER' not in os.environ
+    app.config['SECRET_KEY'] = env('SECRET_KEY', default='006363ce276b892f9f89d16571fd0113')
+    app.config['SQLALCHEMY_DATABASE_URI'] = env('SQLALCHEMY_DATABASE_URI', default='sqlite:///db.sqlite3')
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)

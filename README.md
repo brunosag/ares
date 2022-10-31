@@ -1,7 +1,7 @@
 <h1 align="center">
     <br>
-    <a href="https://www.aresworkout.tk/">
-        <img src="https://user-images.githubusercontent.com/97703272/175403487-6ce8b337-d6bd-4d0d-9dc4-16b57b891706.png" alt="Ares Workout" width="200">
+    <a href="https://www.aresworkout.tk">
+        <img src="https://user-images.githubusercontent.com/97703272/199109650-0f7a2bf0-a102-463d-bc19-af712ab43cc8.png" alt="Ares Workout" width="200">
     </a>
     <br>
     Ares Workout

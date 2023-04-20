@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
-from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
-from flask_login import login_user, login_required, logout_user, current_user
-
+from .models import User
+from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask_login import login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Define blueprint
 auth = Blueprint('auth', __name__)
@@ -12,7 +11,6 @@ auth = Blueprint('auth', __name__)
 @auth.route('/signin', methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
-
         # Collect form information
         email = request.form.get("email")
         password = request.form.get("password")
@@ -23,21 +21,19 @@ def signin():
         # Ensure email was submitted
         if not email:
             flash("Must provide an email address.", category="error")
-        
+
         # Ensure password was submitted
         elif not password:
             flash("Must provide a password.", category="error")
 
         # Ensure email is in database
         elif user:
-
             # Ensure password matches
             if check_password_hash(user.password, password):
-
                 # Log user in
                 login_user(user, remember=True)
                 return redirect(url_for("views.home"))
-            
+
             else:
                 flash("Incorrect password. Try again.", category="error")
 
@@ -51,7 +47,6 @@ def signin():
 @auth.route('/logout')
 @login_required
 def logout():
-
     # Log user out
     logout_user()
 
@@ -61,9 +56,7 @@ def logout():
 
 @auth.route('/signup', methods=["GET", "POST"])
 def signup():
-
     if request.method == "POST":
-
         # Collect form information
         email = request.form.get("email")
         password = request.form.get("password")
@@ -98,7 +91,9 @@ def signup():
 
         # Add user to database
         else:
-            new_user = User(email=email, password=generate_password_hash(password, method="sha256"))
+            new_user = User(
+                email=email, password=generate_password_hash(password, method="sha256")
+            )
             db.session.add(new_user)
             db.session.commit()
 

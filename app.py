@@ -1,4 +1,5 @@
 from website import create_app
+import os
 
 app = create_app()
 
@@ -9,4 +10,4 @@ def is_integer(a):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug='RENDER' not in os.environ)

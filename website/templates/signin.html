@@ -1,64 +1,76 @@
-{% extends "base.html" %}
-
-{% block navbar %}{% endblock %}
-
-{% block body %}
+{% extends "base.html" %} {% block navbar %}{% endblock %} {% block body %}
 
 <div class="container two-columns full-height">
+	<div class="intro">
+		<div class="intro-content">
+			<img class="intro-image" src="/static/images/intro.png" alt="Man working out" />
+			<h1 class="title">Never lose track</h1>
+			<p class="intro-lead">
+				For those who want to focus only on performing their absolute best. Have your
+				exercises, weights, and machine adjustments for multiple workouts, all in one place,
+				so you can get straight to work!
+			</p>
+		</div>
+	</div>
 
-    <div class="intro">
-        <div class="intro-content">
-            <img class="intro-image" src="/static/images/intro.png" alt="Man working out">
-            <h1 class="title">Never lose track</h1>
-            <p class="intro-lead">For those who want to focus only on performing their absolute best. Have your exercises, weights, and machine adjustments for multiple workouts, all in one place, so you can get straight to work!</p>
-        </div>
-    </div>
-
-    <div class="welcome">
-        <div class="welcome-top">
-            <img class="welcome-image" src="/static/images/logo-nobg.png" alt="Ares Workout Logo">
-            <div class="welcome-headline">
-                <h1 class="title">Sign in to Ares</h1>
-                <p class="welcome-lead">Welcome back! Please enter your details.</p>
-            </div>
-            <form class="welcome-form" method="POST">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            {% if category == "error" %}
-                                <div class="alert alert-error show" role="alert">
-                                    <span>{{ message }}</span>
-                                    <button type="button" class="alert-close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                            {% else %}
-                                <div class="alert alert-success show" role="alert">
-                                    <span>{{ message }}</span>
-                                    <button type="button" class="alert-close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-                <div class="input-with-icon">
-                    <input class="text-input" type="email" placeholder="Email" name="email" maxlength="50" required>
-                    <i class="input-icon fa-solid fa-envelope"></i>
-                </div>
-                <div class="input-with-icon">
-                    <input class="text-input" type="password" placeholder="Password" name="password" maxlength="50" required>
-                    <i class="input-icon fa-solid fa-lock"></i>
-                </div>
-                <button class="btn btn-primary" type="submit">Sign in</button>
-            </form>
-        </div>
-        <div class="welcome-bottom">
-            <p>Don't have an account? <a class="text-primary" href="/signup">Sign up</a></p>
-        </div>
-    </div>
-
+	<div class="welcome">
+		<div class="welcome-top">
+			<img class="welcome-image" src="/static/images/logo-nobg.png" alt="Ares Workout Logo" />
+			<div class="welcome-headline">
+				<h1 class="title">Sign in to Ares</h1>
+				<p class="welcome-lead">Welcome back! Please enter your details.</p>
+			</div>
+			<form class="welcome-form" method="POST">
+				{% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+				{% for category, message in messages %} {% if category == "error" %}
+				<div class="alert alert-error show" role="alert">
+					<span>{{ message }}</span>
+					<button type="button" class="alert-close">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+				{% else %}
+				<div class="alert alert-success show" role="alert">
+					<span>{{ message }}</span>
+					<button type="button" class="alert-close">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+				{% endif %} {% endfor %} {% endif %} {% endwith %}
+				<div class="input-with-icon">
+					<input
+						class="text-input"
+						type="email"
+						placeholder="Email"
+						name="email"
+						maxlength="50"
+						required
+					/>
+					<i class="input-icon fa-solid fa-envelope"></i>
+				</div>
+				<div class="input-with-icon">
+					<input
+						class="text-input"
+						type="password"
+						placeholder="Password"
+						name="password"
+						maxlength="50"
+						required
+					/>
+					<i class="input-icon fa-solid fa-lock"></i>
+				</div>
+				<button class="btn btn-primary" type="submit">Sign in</button>
+			</form>
+			<form class="welcome-form" method="POST">
+				<button class="btn btn-tertiary" name="demo_user" type="submit">
+					Sign in with Demo User
+				</button>
+			</form>
+		</div>
+		<div class="welcome-bottom">
+			<p>Don't have an account? <a class="text-primary" href="/signup">Sign up</a></p>
+		</div>
+	</div>
 </div>
 
 <!-- JavaScript -->

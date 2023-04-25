@@ -12,9 +12,8 @@
 
 <p align="center">
     <a href="#about">About</a> •
-    <a href="#features">Features</a> •
     <a href="#video-demo">Video Demo</a> •
-    <a href="#contributing">Contributing</a> •
+    <a href="#how-to-use">How to Use</a> •
     <a href="#license">License</a> •
     <a href="#acknowledgments">Acknowlegments</a> •
     <a href="#contact">Contact</a>
@@ -24,9 +23,9 @@
 
 ## About
 
-There are many great workout trackers out there; however, I always finded myself going back to my good old notes after trying them out for a while, overwhelmed by their complexity. I just wanted a quick glance at my weigths and machine adjustments. So, that's exactly what I did!
+While there are many excellent workout trackers available, I always found myself going back to my good old notes after trying them out for a while. I felt overwhelmed by their complexity and craved a simple way to track my weights and machine adjustments at a glance. That's why I created Ares!
 
-Ares is a minimal workout tracker built with Flask, Python, SQLAlchemy, JavaScript, and pure CSS. It allows users to create workouts with multiple exercises, on which they can store weights and details in; as well as dynamically switch between workouts to quickly use or edit them completely. Designed to be a practical solution for those who want to keep track of their progress, while maintaining efficiency.
+Ares is a minimalist workout tracker built with Flask, Python, SQLAlchemy, JavaScript, and pure CSS. It allows users to create workouts with multiple exercises and store weights and details for each one. With Ares, you can quickly switch between workouts and easily make edits. It was designed to be a practical solution for those who want to track their progress while maintaining efficiency.
 
 ### Built With
 
@@ -37,32 +36,25 @@ Ares is a minimal workout tracker built with Flask, Python, SQLAlchemy, JavaScri
 -   [PostgreSQL](https://www.postgresql.org/)
 -   [Figma](https://www.figma.com/ui-design-tool/)
 
-## Features
-
--   Fully mobile-responsive
--   Authentication with email and password
--   Create workouts with name and description
--   Add and remove exercises with name and include details option
--   Dynamically reorder exercises with drag and drop
--   Edit workout after adding it + delete workout
--   Exercise list display with weights and details
--   Edit weights and details without leaving the workout page
--   Switch between workouts through select menu on both workout and edit-workout pages
-
 ## Video Demo
 
 https://user-images.githubusercontent.com/97703272/176287446-cadcaab4-0c77-41ae-b85c-5afe05d0465a.mp4
 
-## Contributing
+## How to Use
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Any contributions you make are **greatly appreciated**.
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+| Screenshot | Instructions |
+|--|--|
+| ![Sign in](https://user-images.githubusercontent.com/97703272/234174007-5f0b9160-a88c-4c39-9b4a-a9a3a15e6747.png) | To access the app, you have two options: create a new account or sign in with a demo user. If you choose to sign in with a demo user, a brand new account will be generated for one-time use. |
+| ![Home](https://user-images.githubusercontent.com/97703272/234174024-ab6e31c4-c243-4055-b4a1-5b0322b788b6.png) | Once you're signed in, click on "Add workout" to create your first workout. |
+| ![Add workout](https://user-images.githubusercontent.com/97703272/234174042-5ebde671-2083-43fe-b74e-6515f7db2db1.png) | Give your workout a name with 1-12 characters and optionally, a short description with up to 18 characters. |
+| ![Add exercises](https://user-images.githubusercontent.com/97703272/234174050-72d65cf8-94fc-47e5-9ee8-748c10380c89.png) | Start adding exercises by giving them names (up to 45 characters) and selecting whether to include details like machine adjustments, number of reps, etc. To add more exercises, simply click the "+" button under the existing ones. |
+| ![Reorder exercises](https://user-images.githubusercontent.com/97703272/234174394-39d1e76b-05ec-4424-8f28-adef6149a376.png) | You can both delete and reorder exercises. To delete an exercise, click the "X" button on the desired one. To reorder exercises, click and drag the "=" button and move the exercise to the new location. |
+| ![Created workout](https://user-images.githubusercontent.com/97703272/234174412-97719137-6187-4bb3-a6f9-bb7e6145cf6b.png) | Once you're satisfied with the workout, click "Save workout". You'll be redirected to the home page where you'll see your newly created workout. |
+| ![Edit workout](https://user-images.githubusercontent.com/97703272/234174503-c51ae570-66c0-428e-a9de-824a3a5c6e66.png) | If you wish to make any changes, click the pencil icon to edit the workout. This will take you to a page where you can modify any previous steps. You can also delete the workout by clicking the grey "Delete workout" button at the bottom of the page. |
+| ![Delete workout](https://user-images.githubusercontent.com/97703272/234174511-5f32a31b-3eb3-4631-980f-0a1fa3459abb.png) | You'll be prompted to confirm your choice since all exercises will be deleted, and the process is irreversible. To confirm the deletion, press "Delete". |
+| ![Workout page](https://user-images.githubusercontent.com/97703272/234174420-52b94514-e839-4977-85e2-15d6af35bf39.png) | To access any workout from the home page, simply click on the desired one. You'll be taken to the workout page where all exercises are listed, but no weights or details have been added yet. Notice that you can quickly switch between workouts using the top dropdown menu. |
+| ![Edit info](https://user-images.githubusercontent.com/97703272/234174444-e04d6cc7-31dc-42aa-8545-55c6e437b8ac.png) | To add weights and details, click the orange "Edit" button at the bottom of the page. This will unlock the inputs on each exercise where you can enter all the necessary information. |
+| ![Updated info](https://user-images.githubusercontent.com/97703272/234174458-9b7e7138-5787-4db7-9956-b490670b5218.png) | Once you've input everything, click "Save changes", and the page will be updated. |
 
 ## License
 

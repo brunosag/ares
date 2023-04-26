@@ -9,5 +9,5 @@ def is_integer(a):
     return a.is_integer()
 
 
-if __name__ == '__main__':
-    app.run(debug='RENDER' not in os.environ)
+if __name__ == "__main__":
+    app.run(debug="FLY_APP_NAME" not in os.environ)

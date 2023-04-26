@@ -9,8 +9,9 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", default="006363ce276b892f9f89d16571fd0113")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI", default="sqlite:///db.sqlite3")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", default="sqlite:///db.sqlite3")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["PROPAGATE_EXCEPTIONS"] = True
 
     db.init_app(app)
 

@@ -1,61 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
+	<head>
+		<!-- Meta Tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Meta Tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Font Awesome Kit -->
+		<script src="https://kit.fontawesome.com/9aea94aa37.js" crossorigin="anonymous"></script>
 
-    <!-- Font Awesome Kit -->
-    <script src="https://kit.fontawesome.com/9aea94aa37.js" crossorigin="anonymous"></script>
+		<!-- SortableJS -->
+		<script src="https://SortableJS.github.io/Sortable/Sortable.js"></script>
 
-    <!-- SortableJS -->
-    <script src="https://SortableJS.github.io/Sortable/Sortable.js"></script>
+		<!-- Custom CSS -->
+		<link href="/static/css/styles.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link href="/static/css/styles.css" rel="stylesheet">
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="/static/images/logo.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/static/images/logo.png">
+		<!-- Title -->
+		<title>Ares</title>
 
-    <!-- Title -->
-    <title>Ares Workout</title>
+		<!-- Head placeholder -->
+		{% block head %}{% endblock %}
+	</head>
 
-    <!-- Head placeholder -->
-    {% block head %}{% endblock %}
-
-</head>
-
-<body>
-
-    {% block navbar %}
-        <nav class="navbar">
-            <a href="/" class="nav-branding no-hover">Ares</a>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <ul class="nav-menu">
-                {% block active %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/workout">Workout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                {% endblock %}
-            </ul>
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </label>
-        </nav>
-    {% endblock %}
-
-    {% block body %}{% endblock %}
-
-</body>
-
+	<body>
+		{% block navbar %}
+		<nav class="navbar">
+			<a href="/" class="nav-branding no-hover">Ares</a>
+			<input type="checkbox" id="nav-toggle" class="nav-toggle" />
+			<ul class="nav-menu">
+				{% block active %}
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/workout">Workout</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Logout</a>
+				</li>
+				{% endblock %}
+			</ul>
+			<label for="nav-toggle" class="nav-toggle-label">
+				<span class="hamburger-bar"></span>
+				<span class="hamburger-bar"></span>
+				<span class="hamburger-bar"></span>
+			</label>
+		</nav>
+		{% endblock %} {% block body %}{% endblock %}
+	</body>
 </html>

@@ -1,10 +1,10 @@
 <h1 align="center">
     <br>
     <a href="https://www.aresworkout.tk">
-        <img src="https://user-images.githubusercontent.com/97703272/199109650-0f7a2bf0-a102-463d-bc19-af712ab43cc8.png" alt="Ares Workout" width="200">
+        <img src="https://github.com/brunosag/ares/assets/97703272/3c2dac34-0156-4181-bf4c-f28315fadee9" alt="Ares" width="200">
     </a>
     <br>
-    Ares Workout
+    Ares
     <br>
 </h1>
 
